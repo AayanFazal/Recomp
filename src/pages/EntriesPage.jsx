@@ -130,17 +130,17 @@ const EntriesPage = () => {
   const [editingEntry, setEditingEntry] = useState(null);
   const [isAddingEntry, setIsAddingEntry] = useState(false);
 
-  const handleDelete = (index) => {
-    setEntries(prev => prev.filter((_, i) => i !== index));
+  const handleDelete = (entryId) => {
+    setEntries(prev => prev.filter(entry => entry.id !== entryId));
   };
 
-  const handleEdit = (entry, index) => {
-    setEditingEntry({ ...entry, index });
+  const handleEdit = (entry) => {
+    setEditingEntry(entry);
   };
 
   const handleUpdate = (updatedEntry) => {
-    setEntries(prev => prev.map((entry, index) => 
-      index === editingEntry.index ? updatedEntry : entry
+    setEntries(prev => prev.map(entry => 
+      entry.id === updatedEntry.id ? updatedEntry : entry
     ));
     setEditingEntry(null);
   };
@@ -186,15 +186,15 @@ const EntriesPage = () => {
           <EmptyMessage>No entries yet. Start logging your data!</EmptyMessage>
         ) : (
           <EntryList>
-            {entries.map((entry, index) => (
-              <EntryItem key={entry.date || index}>
+            {entries.map((entry) => (
+              <EntryItem key={entry.id || entry.date}>
                 <EntryHeader>
                   <EntryDate>{entry.date}</EntryDate>
                   <EntryActions>
-                    <ActionButton onClick={() => handleEdit(entry, index)}>
+                    <ActionButton onClick={() => handleEdit(entry)}>
                       Edit
                     </ActionButton>
-                    <ActionButton onClick={() => handleDelete(index)}>
+                    <ActionButton onClick={() => handleDelete(entry.id)}>
                       Delete
                     </ActionButton>
                   </EntryActions>

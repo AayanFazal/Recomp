@@ -10,6 +10,13 @@ const FormContainer = styled.div`
   background-color: ${theme.colors.secondary};
   border-radius: ${theme.borderRadius.large};
   box-shadow: ${theme.shadows.medium};
+  
+  @media (max-width: 430px) {
+    padding: ${theme.spacing.md};
+    width: 100%;
+    margin: 0 auto;
+    border-radius: ${theme.borderRadius.medium};
+  }
 `;
 
 const Title = styled.h2`
@@ -26,6 +33,12 @@ const StyledForm = styled.form`
   gap: ${theme.spacing.md};
   max-width: 500px;
   margin: 0 auto;
+  
+  @media (max-width: 430px) {
+    grid-template-columns: 1fr;
+    gap: ${theme.spacing.sm};
+    width: 100%;
+  }
 `;
 
 const InputGroup = styled.div`
@@ -48,6 +61,7 @@ const StyledInput = styled.input`
   background-color: ${theme.colors.white};
   font-size: ${theme.typography.body.fontSize};
   transition: ${theme.transitions.default};
+  width: 100%;
   
   &:focus {
     outline: none;
@@ -58,6 +72,11 @@ const StyledInput = styled.input`
   &::placeholder {
     color: ${theme.colors.secondary};
   }
+  
+  @media (max-width: 430px) {
+    padding: 0.7rem;
+    font-size: 16px; /* Prevent zoom on input focus on iOS */
+  }
 `;
 
 const ButtonGroup = styled.div`
@@ -65,6 +84,10 @@ const ButtonGroup = styled.div`
   gap: ${theme.spacing.sm};
   margin-top: ${theme.spacing.sm};
   grid-column: 1 / -1;
+  
+  @media (max-width: 430px) {
+    flex-direction: ${props => props.hasCancel ? 'row' : 'column'};
+  }
 `;
 
 const Button = styled.button`
@@ -113,6 +136,7 @@ const EntryForm = ({ initialData, onSubmit, onCancel }) => {
     e.preventDefault();
     const entry = {
       ...formData,
+      id: initialData?.id || Date.now().toString(), // Add unique ID
       weight: parseFloat(formData.weight),
       totalCalories: parseInt(formData.totalCalories),
       cardioCalories: parseInt(formData.cardioCalories),
@@ -120,7 +144,7 @@ const EntryForm = ({ initialData, onSubmit, onCancel }) => {
     };
 
     if (initialData) {
-      setEntries(prev => prev.map(e => e.id === initialData.id ? entry : e));
+      // Don't update entries here, let the parent component handle it
     } else {
       setEntries(prev => [...prev, entry]);
     }
@@ -197,7 +221,7 @@ const EntryForm = ({ initialData, onSubmit, onCancel }) => {
             required
           />
         </InputGroup>
-        <ButtonGroup>
+        <ButtonGroup hasCancel={!!onCancel}>
           {onCancel && (
             <Button type="button" variant="secondary" onClick={onCancel}>
               Cancel
