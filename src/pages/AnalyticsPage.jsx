@@ -28,13 +28,14 @@ const PageContainer = styled.div`
   padding: ${theme.spacing.md};
 `;
 
-const AnalyticsTitle = styled.h2`
-  color: ${theme.colors.primary};
-  font-size: ${theme.typography.h2.fontSize};
+const AnalyticsTitle = styled.h1`
   margin-bottom: ${theme.spacing.md};
+  color: ${theme.colors.primary};
+  border-bottom: 2px solid ${theme.colors.secondary};
+  padding-bottom: ${theme.spacing.xs};
   text-align: center;
-  font-weight: ${theme.typography.h2.fontWeight};
 `;
+
 
 const ProgressContainer = styled.div`
   max-width: 800px;
@@ -77,11 +78,14 @@ const ProgressValue = styled.div`
 
 const StatsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: ${theme.spacing.md};
   max-width: 800px;
   margin: 0 auto ${theme.spacing.lg};
 `;
+
+
+
 
 const StatCard = styled.div`
   background-color: ${theme.colors.secondary};
@@ -94,10 +98,11 @@ const StatCard = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  aspect-ratio: 1;
-  max-width: 200px;
-  margin: 0 auto;
+  aspect-ratio: 1 / 1;
+  width: 100%;
 `;
+
+
 
 const StatTitle = styled.div`
   font-size: ${theme.typography.small.fontSize};

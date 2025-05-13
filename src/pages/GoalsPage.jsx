@@ -7,13 +7,14 @@ const PageContainer = styled.div`
   padding: ${theme.spacing.md};
 `;
 
-const Title = styled.h2`
-  color: ${theme.colors.primary};
-  font-size: ${theme.typography.h2.fontSize};
+const Title = styled.h1`
   margin-bottom: ${theme.spacing.md};
+  color: ${theme.colors.primary};
+  border-bottom: 2px solid ${theme.colors.secondary};
+  padding-bottom: ${theme.spacing.xs};
   text-align: center;
-  font-weight: ${theme.typography.h2.fontWeight};
 `;
+
 
 const GoalsContainer = styled.div`
   max-width: 800px;
@@ -96,15 +97,31 @@ const InfoTitle = styled.h3`
 
 const InfoGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: ${theme.spacing.md};
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: ${theme.spacing.sm};
+  justify-content: center;
 `;
 
+
+
+
 const InfoCard = styled.div`
-  padding: ${theme.spacing.md};
+  padding: ${theme.spacing.sm};
   background-color: ${theme.colors.secondary}10;
   border-radius: ${theme.borderRadius.medium};
+  width: 100%;
+  max-width: 110px;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
 `;
+
+
+
+
 
 const InfoLabel = styled.div`
   color: ${theme.colors.text.secondary};

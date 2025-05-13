@@ -8,13 +8,14 @@ const PageContainer = styled.div`
   padding: ${theme.spacing.md};
 `;
 
-const Title = styled.h2`
-  color: ${theme.colors.primary};
-  font-size: ${theme.typography.h2.fontSize};
+const Title = styled.h1`
   margin-bottom: ${theme.spacing.md};
+  color: ${theme.colors.primary};
+  border-bottom: 2px solid ${theme.colors.secondary};
+  padding-bottom: ${theme.spacing.xs};
   text-align: center;
-  font-weight: ${theme.typography.h2.fontWeight};
 `;
+
 
 const AddButton = styled.button`
   display: block;

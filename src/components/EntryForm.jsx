@@ -72,12 +72,26 @@ const StyledInput = styled.input`
   &::placeholder {
     color: ${theme.colors.secondary};
   }
-  
+
+  /* Special case for date input field */
+  &[type="date"] {
+    font-size: 16px; /* Adjust font size for date input */
+    padding: 1rem;  /* Increase padding for a more rectangular look */
+    width: 100%; /* Ensure it spans the full width */
+    max-width: 100%; /* Avoid squeezing */
+    border-radius: ${theme.borderRadius.medium}; /* Keep the border radius consistent */
+    height: 50px;  /* Adjust height to make the input longer/rectangular */
+  }
+
   @media (max-width: 430px) {
-    padding: 0.7rem;
-    font-size: 16px; /* Prevent zoom on input focus on iOS */
+    padding: 1rem;  /* Increase padding for mobile */
+    font-size: 16px; /* Make sure the font size is large enough for mobile screens */
+    height: 50px; /* Ensure a consistent height on mobile */
   }
 `;
+
+
+
 
 const ButtonGroup = styled.div`
   display: flex;

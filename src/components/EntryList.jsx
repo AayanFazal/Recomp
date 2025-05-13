@@ -1,41 +1,3 @@
-import React, { useContext } from 'react';
-import { DataContext } from '../context/DataContext';
-import styled from 'styled-components';
-import { theme } from '../theme';
-
-const ListContainer = styled.div`
-  padding: ${theme.spacing.lg};
-  margin: ${theme.spacing.sm} auto;
-  max-width: 600px;
-  background-color: ${theme.colors.background};
-  border-radius: ${theme.borderRadius.large};
-  box-shadow: ${theme.shadows.medium};
-`;
-
-const Title = styled.h2`
-  color: ${theme.colors.primary};
-  font-size: ${theme.typography.h2.fontSize};
-  margin-bottom: ${theme.spacing.md};
-  text-align: center;
-  font-weight: ${theme.typography.h2.fontWeight};
-`;
-
-const EmptyMessage = styled.p`
-  text-align: center;
-  color: ${theme.colors.text.secondary};
-  font-size: ${theme.typography.body.fontSize};
-  padding: ${theme.spacing.md};
-  background-color: ${theme.colors.white};
-  border-radius: ${theme.borderRadius.medium};
-  box-shadow: ${theme.shadows.small};
-`;
-
-const StyledEntryList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-`;
-
 const EntryItem = styled.li`
   background-color: ${theme.colors.white};
   padding: ${theme.spacing.md};
@@ -43,6 +5,9 @@ const EntryItem = styled.li`
   border-radius: ${theme.borderRadius.medium};
   box-shadow: ${theme.shadows.small};
   transition: ${theme.transitions.default};
+  display: flex;
+  flex-direction: column;
+  gap: ${theme.spacing.xs}; /* Add gap between date and details */
 
   &:hover {
     transform: translateY(-2px);
@@ -54,16 +19,26 @@ const EntryItem = styled.li`
   }
 `;
 
-const EntryDate = styled.strong`
-  color: ${theme.colors.primary};
-  font-size: ${theme.typography.body.fontSize};
-  display: block;
-  margin-bottom: ${theme.spacing.xs};
+const EntryDetails = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${theme.spacing.md};
+  width: 100%;
+  justify-content: flex-start;
 `;
 
-const EntryDetails = styled.span`
-  color: ${theme.colors.text.secondary};
+const DetailItem = styled.div`
+  display: flex;
+  align-items: center;
+  min-width: 150px; /* Ensure labels and values align even if labels have longer text */
   font-size: ${theme.typography.body.fontSize};
+  color: ${theme.colors.text.secondary};
+
+  span:first-child {
+    color: ${theme.colors.primary}; /* Make the value stand out */
+    font-weight: 600;
+    margin-left: 5px;
+  }
 `;
 
 const EntryList = () => {
@@ -86,8 +61,22 @@ const EntryList = () => {
           <EntryItem key={entry.date || idx}>
             <EntryDate>{entry.date}</EntryDate>
             <EntryDetails>
-              Weight: {entry.weight} lbs | Total Calories: {entry.totalCalories} | 
-              Cardio: {entry.cardioCalories} | Weight Training: {entry.weightTrainingCalories}
+              <DetailItem>
+                <span>Weight:</span>
+                <span>{entry.weight} lbs</span>
+              </DetailItem>
+              <DetailItem>
+                <span>Total Cal::</span>
+                <span>{entry.totalCalories}</span>
+              </DetailItem>
+              <DetailItem>
+                <span>Cardio:</span>
+                <span>{entry.cardioCalories}</span>
+              </DetailItem>
+              <DetailItem>
+                <span>Weight Training:</span>
+                <span>{entry.weightTrainingCalories}</span>
+              </DetailItem>
             </EntryDetails>
           </EntryItem>
         ))}
@@ -96,4 +85,4 @@ const EntryList = () => {
   );
 };
 
-export default EntryList; 
+export default EntryList;

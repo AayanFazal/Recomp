@@ -12,19 +12,17 @@ const PageContainer = styled.div`
   gap: ${theme.spacing.lg};
 `;
 
-const Title = styled.h2`
-  color: ${theme.colors.primary};
-  font-size: ${theme.typography.h2.fontSize};
+const Title = styled.h1`
   margin-bottom: ${theme.spacing.md};
-  text-align: center;
-  font-weight: ${theme.typography.h2.fontWeight};
+  color: ${theme.colors.primary};
+  border-bottom: 2px solid ${theme.colors.secondary};
+  padding-bottom: ${theme.spacing.xs};
 `;
 
 const HomePage = () => {
   return (
     <PageContainer>
-      <Title>Today's Progress</Title>
-      <StreakCounter />
+      <Title>RECOMP</Title>
       <EntryForm />
     </PageContainer>
   );

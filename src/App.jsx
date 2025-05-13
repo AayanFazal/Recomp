@@ -84,22 +84,25 @@ const Tabs = () => {
   
   return (
     <TabBar>
-      <TabLink to="/" className={location.pathname === '/' ? 'active' : ''}>
-        <IconWrapper><FaHome /></IconWrapper>
-        Home
+      <TabLink to="/goals" className={location.pathname === '/goals' ? 'active' : ''}>
+        <IconWrapper><FaBullseye /></IconWrapper>
+        Goals
       </TabLink>
       <TabLink to="/entries" className={location.pathname === '/entries' ? 'active' : ''}>
         <IconWrapper><FaListAlt /></IconWrapper>
         Entries
       </TabLink>
+      
+    
+      <TabLink to="/" className={location.pathname === '/' ? 'active' : ''}>
+        <IconWrapper><FaHome /></IconWrapper>
+        Home
+      </TabLink>
       <TabLink to="/analytics" className={location.pathname === '/analytics' ? 'active' : ''}>
         <IconWrapper><FaChartBar /></IconWrapper>
         Analytics
       </TabLink>
-      <TabLink to="/goals" className={location.pathname === '/goals' ? 'active' : ''}>
-        <IconWrapper><FaBullseye /></IconWrapper>
-        Goals
-      </TabLink>
+      
       <TabLink to="/export" className={location.pathname === '/export' ? 'active' : ''}>
         <IconWrapper><FaFileExport /></IconWrapper>
         Export

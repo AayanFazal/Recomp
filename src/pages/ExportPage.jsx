@@ -42,7 +42,9 @@ const PageTitle = styled.h1`
   color: ${theme.colors.primary};
   border-bottom: 2px solid ${theme.colors.secondary};
   padding-bottom: ${theme.spacing.xs};
+  text-align: center;
 `;
+
 
 const ExportSection = styled.div`
   background-color: ${theme.colors.white};
